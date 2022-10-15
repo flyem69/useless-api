@@ -1,6 +1,11 @@
-#[macro_use] extern crate rocket;
+#[macro_use]
+extern crate rocket;
 
-use rocket::{get, launch};
+use rocket::{Build, get, launch};
+
+use api::math_endpoint;
+
+mod api;
 
 #[get("/")]
 fn index() -> &'static str {
@@ -8,6 +13,10 @@ fn index() -> &'static str {
 }
 
 #[launch]
-fn rocket() -> _ {
-    rocket::build().mount("/", routes![index])
+fn rocket() -> rocket::Rocket<Build> {
+    rocket::build().mount("/", routes![
+        index,
+        math_endpoint::get_addition,
+        math_endpoint::get_subtraction
+    ])
 }
