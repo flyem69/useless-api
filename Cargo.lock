@@ -1356,7 +1356,10 @@ dependencies = [
 name = "useless-api"
 version = "0.1.0"
 dependencies = [
+ "async-trait",
  "rocket",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]

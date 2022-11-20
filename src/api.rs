@@ -1,1 +1,2 @@
-pub mod math_endpoint;
+pub mod algorithm;
+pub mod math;

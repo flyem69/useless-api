@@ -3,20 +3,22 @@ extern crate rocket;
 
 use rocket::{Build, get, launch};
 
-use api::math_endpoint;
-
 mod api;
 
 #[get("/")]
 fn index() -> &'static str {
-    "Hello world"
+    "This is useless API. Enjoy!"
 }
 
 #[launch]
 fn rocket() -> rocket::Rocket<Build> {
-    rocket::build().mount("/", routes![
-        index,
-        math_endpoint::get_addition,
-        math_endpoint::get_subtraction
-    ])
+    rocket::build().mount(
+        "/",
+        routes![
+            index,
+            api::algorithm::astar::astar_endpoint::post_astar,
+            api::math::add::add_endpoint::get_addition,
+            api::math::subtract::subtract_endpoint::get_subtraction,
+        ],
+    )
 }
