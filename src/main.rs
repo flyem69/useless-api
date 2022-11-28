@@ -7,7 +7,7 @@ mod api;
 
 #[get("/")]
 fn index() -> &'static str {
-    "This is useless API. Enjoy!"
+    "This is useless API."
 }
 
 #[launch]
